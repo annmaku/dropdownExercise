@@ -18,8 +18,7 @@ public class StepDefinitions {
         System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Selenium\\chromedriver.exe");
 
         driver = new ChromeDriver();
-
-
+        driver.manage().window().maximize();
     }
 
     @Given("I go to the product page")
@@ -33,6 +32,18 @@ public class StepDefinitions {
     public void i_select_size_s_in_the_dropdown_menu() {
         Select dropDown = new Select(driver.findElement(By.id("attribute400")));
         dropDown.selectByValue("1419");
+    }
+
+    @Then("add {int} pieces of the product into the shopping cart")
+    public void add_pieces_of_the_product_into_the_shopping_cart(Integer int1) throws InterruptedException {
+        WebElement quantity = driver.findElement(By.className("qty-plus"));
+        quantity.click();
+
+        WebElement putToCart = driver.findElement(By.id("product-addtocart-button"));
+        putToCart.click();
+
+        Thread.sleep(3000);
+        driver.quit();
     }
 
 

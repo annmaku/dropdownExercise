@@ -7,3 +7,4 @@ Feature: select from dropdown menu
   Scenario: Select from dropdown menu
     Given I go to the product page
     When I select size S in the dropdown menu
+    Then add 2 pieces of the product into the shopping cart
